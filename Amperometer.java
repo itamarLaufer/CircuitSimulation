@@ -14,3 +14,4 @@ public class Amperometer extends Resistor implements Meter {
         return getCurrent();
     }
 }
+/* just nothing*/
