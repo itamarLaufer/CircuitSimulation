@@ -1,7 +1,10 @@
 package com.company;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 /**
  * represents a circuit which has some voltage source and many resistors connected to each other
@@ -9,21 +12,19 @@ import java.util.List;
 public class Circuit
 {
     private double voltage; //V the voltage of the whole circuit
-    private Resistor startResistor; //the first resistor in the circuit which is connected to the positive side of the voltage source
-    private Resistor endResistor; //the last resistor in the circuit which is connected to the negative side of the voltage source
-    private List<Resistor>resistors; //the different resistors in the circuit (used for printing all the values in the circuit
-
-    //Todo resistors will be initiallized from the start and end resistors and not from parameter
+    private BinNode<Resistor> startResistor; //the first resistor in the circuit which is connected to the positive side of the voltage source
+    private BinNode<Resistor> endResistor; //the last resistor in the circuit which is connected to the negative side of the voltage source
+    private List<BinNode<Resistor>>components; //the different resistors in the circuit (used for printing all the values in the circuit
 
     /**
      * create a circuit with the given data
      * @param voltage the voltage of the voltage source in the circuitin Voltes
      * @param resistorPositive the resistor which is connected to the positive side of the voltage source
      * @param resistorNegative the resistor which is connected to the negative side of the voltage source
-     * @param resistors the different resistors in the circuit
+     * @param components the different resistors in the circuit
      */
-    public Circuit(double voltage,Resistor resistorPositive,Resistor resistorNegative,List<Resistor>resistors) {
-        this.resistors=resistors;
+    public Circuit(double voltage, BinNode<Resistor> resistorPositive, BinNode<Resistor> resistorNegative, List<BinNode<Resistor>> components) {
+        this.components = components;
         this.voltage = voltage;
         this.startResistor = resistorPositive;
         this.endResistor = resistorNegative;
@@ -48,151 +49,166 @@ public class Circuit
     }
 
     /**
-     * calculate resstence of a specific part in circuit (recursive)
+     * calculate residence of a specific part in circuit (recursive)
      * @param from the first resistor in the specific part
      * @param to the last resistor in the specific part
-     * @return the equivalent resistence of the part between fron and to
+     * @return the equivalent resistance of the part between fran and to
      */
-    private double getResistanceOfPart(Resistor from,Resistor to)
+    private double getResistanceOfPart(BinNode<Resistor> from, BinNode<Resistor> to)
     {
-        if(from==to) //stop codition we reached the end of the part
+        if(from == to) //stop condition we reached the end of the part
             return 0;
-        if(from.resistor2==null&&from.resistor1!=null) //only one resistor is connected
-            return from.getResistance()+getResistanceOfPart(from.resistor1,to); //from resistence is added to result
+        if(from.getRight() == null && from.getLeft() != null) //only one resistor is connected
+            return from.getValue().getResistance() + getResistanceOfPart(from.getLeft(), to); //from resistance is added to the result
         // if the from has 2 resistors connected
-        Resistor cut = findCut(from.resistor1,from.resistor2); //cut is the resistor where the 2 resistor splitting from 'from' are getting united again
-        double resistance1 = getResistanceOfPart(from.resistor1,cut); //resistence of 1 side of the split
-        double resistance2 = getResistanceOfPart(from.resistor2,cut); //resistence of other side of the split
-        //resistence will be the resistence of from plus the equivalent of the split (r1*r2/(r1+r2) plus the resistence to 'to')
-        return from.getResistance()+resistance1*resistance2/(resistance1+resistance2)+getResistanceOfPart(cut,endResistor);
+        BinNode<Resistor> cut = from.getValue().cut;
+        double resistance1 = getResistanceOfPart(from.getLeft(), cut); //resistance of 1 side of the split
+        double resistance2 = getResistanceOfPart(from.getRight(), cut); //resistance of other side of the split
+        //resistance will be the resistance of from plus the equivalent of the split (r1*r2/(r1+r2) plus the resistance to 'to')
+        return from.getValue().getResistance() + resistance1 * resistance2 / (resistance1 + resistance2) + getResistanceOfPart(cut, endResistor);
     }
 
     /**
-     *
-     * @return the equivalant resistence of the entire circuit
+     * @return the equivalent resistance of the entire circuit
      */
     public double getTotalResistance()
     {
-        return getResistanceOfPart(startResistor,endResistor);
+        return getResistanceOfPart(startResistor, endResistor);
     }
 
     /**
-     * finds the resistor where r1 and r2 meets each other
-     * @param r1
-     * @param r2
-     * @return
-     */
-    public Resistor findCut(Resistor r1,Resistor r2)
-    {
-        List<Resistor>l1=resistorsGroupToList(r1); //resistor connected to r1 and to resistors after it
-        List<Resistor>l2=resistorsGroupToList(r2); //resistor connected to r2 and to resistors after it
-        for(int i=0;i<l1.size();i++)
-        {
-            for(int j=0;j<l2.size();j++)
-            {
-                if(l2.get(j)==l1.get(i)) //same resistor
-                    return l2.get(j);
-            }
-        }
-        return endResistor; //they meet only in the end of the circuit
-    }
-
-    /**
-     * genereate a list of resistors connected (not only directly but also connected to other which are connected) to the given resistor
-     * @param resistor the resistor to genreate resistors connected to it
-     * @return list of the resistors which are connected (not only directly but also connected to other which are connected) to the given resistor
-     */
-    public List<Resistor>resistorsGroupToList(Resistor resistor)
-    {
-        List<Resistor>res = new ArrayList<>();
-        addResistorsGroupToList(resistor,res);
-        return res;
-    }
-
-    /**
-     * method insert the given resistor and the resistors connected to it to the given list (recursive)
-     * @param resistor the resistor to insert it and the resistors connect to it (not only directly etc) to the given list
-     * @param list to insert to it the given resistor and those connected to it.
-     */
-    private void addResistorsGroupToList(Resistor resistor, List<Resistor> list) {
-        if(resistor==null)
-            return;
-        if (resistor != endResistor) {
-            list.add(resistor);
-            addResistorsGroupToList(resistor.resistor1, list);
-            addResistorsGroupToList(resistor.resistor2, list);
-        }
-    }
-
-    /**
-     *
      * @return the total current in the circuit using Own Law
      */
     public double getTotalCurrent()
     {
-        return voltage/getTotalResistance();
+        return voltage / getTotalResistance();
     }
 
     /**
-     * metohd pass through the circuit from the given resistor and update the current (and the voltage consequenly which flows through each resitor in circuit (recursive)
-     * @param resistor the resistor which has the given current and from it we are calculating
-     * @param current the current the the given resistor gets
+     * method pass through the circuit from the given node and update the current (and the voltage consequently which flows through each resistor in circuit (recursive)
+     * @param node the node which has the given current and from it we are calculating
+     * @param current the current the the given node gets
      */
-    //Todo another similer function that recieves end resistor so we won't calculate from the split to the end in vain
-    private void setCircuitValues(Resistor resistor,double current)
+    private void setCircuitValues(BinNode<Resistor> node, double current)
     {
-        if((resistor==null)||(resistor==endResistor)) //there is no need to contiue calculating
+        if(node == null)
             return;
-        if(resistor.resistor2==null&&resistor.resistor1!=null) //linear connection
+        node.getValue().setCurrent(current);
+        if(node == endResistor)
+            return;
+        if(node.getRight() == null && node.getLeft() != null) //linear connection
         {
-            //the next resistor gets all the current that the last resistor got
-            resistor.resistor1.setCurrent(current);
-            setCircuitValues(resistor.resistor1,current); //contiue from the next resisotr
+            //the next node gets all the current that the last node got
+            setCircuitValues(node.getLeft(), current); //continue from the next node
         }
 
         else {
-            Resistor cut = findCut(resistor.resistor1, resistor.resistor2); //where the 2 resistors splitting from 'resistor' meet again
-            double resistance1=getResistanceOfPart(resistor.resistor1, cut); //the resistence of 1 side of splie
-            double resistance2=getResistanceOfPart(resistor.resistor2, cut); //the resistence of other side of splie
-            // current each side of split get is in reverse ratio to the resistences of each part
-            double current1=current*(resistance2/(resistance1+resistance2));
-            double current2=current*(resistance1/(resistance1+resistance2));
-            resistor.resistor1.setCurrent(current1);
-            resistor.resistor2.setCurrent(current2);
+            BinNode<Resistor> cut = node.getValue().cut;
+            double resistance1 = getResistanceOfPart(node.getLeft(), cut); //the resistance of 1 side of split
+            double resistance2 = getResistanceOfPart(node.getRight(), cut); //the resistance of other side of split
+            // current each side of split get is in reverse ratio to the resistances of each part
+            double current1 = current * (resistance2 / (resistance1 + resistance2));
+            double current2 = current * (resistance1 / (resistance1 + resistance2));
             // continue calculating for each side of split
-            setCircuitValues(resistor.resistor1,current1);
-            setCircuitValues(resistor.resistor2,current2);
+            setCircuitValues(node.getLeft(), current1);
+            setCircuitValues(node.getRight(), current2);
             // after cut all the current is united again
-            cut.setCurrent(current);
-            //contiue calcuating from the cut resistor
-            setCircuitValues(cut,current);
+            cut.getValue().setCurrent(current);
+            //continue calculating from the cut node
+            setCircuitValues(cut, current);
         }
     }
 
     /**
-     * pass through the circuit from the start resistor to the end resitor and update the current (and the voltage consequenly) which flows through each resitor in circuit
+     * pass through the circuit from the start resistor to the end resitor and update the current (and the voltage consequently) which flows through each resistor in circuit
      */
     public void setCircuitValues()
     {
+        LinkedList<Character>firstId = new LinkedList<>();
+        firstId.add('S');
+        updateCuts(startResistor, firstId, new LinkedList<>());
         double totalCurrent = getTotalCurrent();
-        startResistor.setCurrent(totalCurrent);
-        startResistor.calculateVoltage();
-        setCircuitValues(startResistor,totalCurrent);
+        setCircuitValues(startResistor, totalCurrent);
+
     }
-    //assumes a is connected to b
     @Override
     public String toString()
     {
-        String res="";
-        res+="Circuit:voltage="+voltage+"V";
-        res+=System.lineSeparator();
-        res+="Components:"+System.lineSeparator();
-        for(Resistor resistor:resistors)
+        StringBuilder res= new StringBuilder();
+        res.append("Circuit:voltage=").append(voltage).append("V");
+        res.append(System.lineSeparator());
+        res.append("Components:").append(System.lineSeparator());
+        for(BinNode<Resistor> resistor:components)
         {
-            res+=resistor.toString();
-            res+=System.lineSeparator();
+            res.append(resistor.toString());
+            res.append(System.lineSeparator());
         }
-        res+="]";
-        return res;
+        res.append("]");
+        return res.toString();
+    }
+
+    /**
+     * Pass through the circuit and update for each node where there is a split its cut node when they meet again
+     * @param node the current node
+     * @param id the current id of the node which represents the way from the root node to the current node.
+     * S means single child connection, L means left child and R a right chile, this id helps finding the cut node for each split
+     * @param splitting list of the nodes found yet that splits (has 2 children)
+     */
+    private void updateCuts(BinNode<Resistor>node, LinkedList<Character>id, LinkedList<BinNode<Resistor>>splitting){
+        if(node == null) {
+            return;
+        }
+        if(node.getValue().id != null){ //we've passed this resistor before which means that there is a meeting of a split here
+            List<Character> sharedParentId = findSharedId(new LinkedList<>(id), node.getValue().id);
+            BinNode<Resistor> sharedParent = splitting.stream().filter(it -> it.getValue().id.hashCode() == sharedParentId.hashCode()).collect(Collectors.toList()).get(0);
+            sharedParent.getValue().cut = node;
+            node.getValue().id = id;
+        }
+        else{
+            node.getValue().id = id;
+            if(node.getRight() == null && node.getLeft() != null) { //only one connected
+                LinkedList<Character>newId = new LinkedList<>(id);
+                newId.add('S');
+                updateCuts(node.getLeft(), newId, splitting);
+            }
+            else if(node.getRight() != null){ //2 connected
+                LinkedList<Character>newId1 = new LinkedList<>(id);
+                LinkedList<Character>newId2 = new LinkedList<>(id);
+                newId1.add('L');
+                newId2.add('R');
+                splitting.add(node);
+                updateCuts(node.getLeft(), newId1, splitting);
+                updateCuts(node.getRight(), newId2, splitting);
+                splitting.removeLast();
+            }
+        }
+    }
+
+    /**
+     * Finds the biggest shared id of the 2 given ids.
+     * A shared id is the longest sequence of characters from the beginning that is the same in both string ids.
+     * For instance SLLSSLLRRLLS and SLLSRRSSLLR will return SLLS
+     * @param id1
+     * @param id2
+     */
+    private List<Character> findSharedId(LinkedList<Character> id1, LinkedList<Character> id2) {
+        int size1 = id1.size();
+        int size2 = id2.size();
+        int delta = size1 -size2;
+        LinkedList<Character> bigger;
+        if(delta > 0)
+            bigger = id1;
+        else {
+            bigger = id2;
+            delta *= -1;
+        }
+        for(int i=0; i < delta; i++){
+            bigger.removeLast();
+        }
+        while (!id1.isEmpty() && id1.hashCode() != id2.hashCode()){
+            id1.removeLast();
+            id2.removeLast();
+        }
+        return id1;
     }
 }
