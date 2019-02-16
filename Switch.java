@@ -1,11 +1,11 @@
 package com.company;
 
 /**
- * represents a switch which is a resistor that has 2 states open - > enourmous resistence and close -> 0 resistence
+ * represents a switch which is a resistor that has 2 states open - > enormous resistance and close -> 0 resistance
  */
 public class Switch extends Resistor {
-    final double OPEN_RESISTANCE=999999999; //infintie
-    //default switch is open
+    final double OPEN_RESISTANCE = 999999999; //infinite
+    // default switch is open
 
     /**
      * creates an open switch
@@ -55,7 +55,7 @@ public class Switch extends Resistor {
             close();
     }
     /**
-     * overrides setResistance because this kind of resisotr doesn't allow changing it's resistence (there are 2 modes only)
+     * overrides setResistance because this kind of resistor doesn't allow changing it's resistance (there are 2 modes only)
      * @param resistance
      */
     @Override
