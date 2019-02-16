@@ -1,58 +1,82 @@
 package com.company;
 
-import java.util.Scanner;
 
 /**
- * a class that concentrate the creation of resistos
- * the class generates the data about the resistors to build using input
+ * represents a wire in a circuit which has some resistance which is determined by this equation: resistivity*length/area
  */
-public class ResistorFactory
+public class ResistWire extends Resistor
 {
-    private Scanner in;
 
-    public ResistorFactory() {
-        in = new Scanner(System.in);
+    private double resistivity; //[Ωm]
+    private double length; //[m]
+    private double area; //[m*m]
+    /**
+     * creates resist wre with the given data
+     * @param name the name of the resistor
+     * @param resistivity the wire resistivity [Ωm]
+     * @param length the wire length [m]
+     * @param area the wire area[m*m]
+     */
+    public ResistWire(String name,double resistivity, double length, double area)
+    {
+        super(name,resistivity*length/area);
+        this.area=area;
+        this.resistivity=resistivity;
+        this.length=length;
     }
 
     /**
-     * the class take input from the user about the resistor to create and returns it
-     * @return a resistor according to the data about it given in input
+     * calculate resistance according to the equation: resistivity*length/area
+     * meted is called after changing some data about the resist wire
      */
-    public Resistor getResistor()
+    private void calculateResistance()
     {
-        System.out.println("Insert resistor type(r ,switch, amperometer, voltmeter,resistWire)");
-        String type = in.next();
-        System.out.println("Insert resistor name");
-        String name = in.next();
-        if(type.equals("r"))
-        {
-            System.out.println("Insert amount of resistance(Ω)");
-            return new Resistor(name,in.nextDouble());
-        }
-        else if(type.equals("switch"))
-        {
-            System.out.println("Is it open? (true=open, false=close)");
-            return new Switch(name,in.nextBoolean());
-        }
-        else if(type.equals("amperometer"))
-        {
-            return new Amperometer(name);
-        }
-        else if(type.equals("voltmeter"))
-        {
-            return new Voltmeter(name);
-        }
-        else if(type.equals("resist wire"))
-        {
-            System.out.println("Insert amount of resistivity(Ωm)");
-            double resistivity = in.nextDouble();
-            System.out.println("Insert wire's length(m)");
-            double length = in.nextDouble();
-            System.out.println("Insert wire's area(m*m)");
-            return new ResistWire(name,resistivity,length,in.nextDouble());
-        }
-        else
-            System.out.println("We do not support this type! creation has stopped");
-            return null;
+        setResistance(resistivity*length/area);
+    }
+
+    public double getResistivity() {
+        return resistivity;
+    }
+
+    public void setResistivity(double resistivity) {
+        this.resistivity = resistivity;
+        calculateResistance();
+    }
+
+    public double getLength() {
+        return length;
+    }
+
+    public void setLength(double length) {
+        this.length = length;
+        calculateResistance();
+    }
+
+    public double getArea() {
+        return area;
+    }
+
+    public void setArea(double area) {
+        this.area = area;
+        calculateResistance();
+    }
+
+    @Override
+    public String toString() {
+        return super.toString()+" "+"ResistWire{" +
+                "resistivity=" + resistivity +"Ωm"+
+                ", length=" + length +"m"+
+                ", area=" + area +"m*m"+
+                '}';
+    }
+
+    /**
+     * overrides setResistance because this kind of resistor doesn't allow changing it's resistance (it can be changed by changing other data like it's length)
+     * @param resistance
+     */
+    @Override
+    public void setResistance(double resistance)
+    {
+        //do nothing
     }
 }
