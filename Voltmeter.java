@@ -4,7 +4,7 @@ package com.company;
  * represents a voltmeter which is kind of resistor (with enormous resistance) and a Meter that measures voltage on it
  */
 public class Voltmeter extends Resistor implements Meter {
-    final double OPEN_RESISTANCE=999999999; //infintie
+    final double OPEN_RESISTANCE=999999999; //infinite
 
     /**
      * creates a voltmeter with the given data
@@ -24,7 +24,7 @@ public class Voltmeter extends Resistor implements Meter {
         return getVoltage();
     }
     /**
-     * overrides setResistance because this kind of resisotr doesn't allow changing it's resistance (it can be changed by changing other data like it's length)
+     * overrides setResistance because this kind of resistor doesn't allow changing it's resistance (it can be changed by changing other data like it's length)
      * @param resistance
      */
     @Override
