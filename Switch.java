@@ -1,7 +1,5 @@
 package com.company;
 
-import java.util.List;
-
 /**
  * represents a switch which is a resistor that has 2 states open - > enourmous resistence and close -> 0 resistence
  */
@@ -27,19 +25,6 @@ public class Switch extends Resistor {
         super(name,0);
         if(!isOpen)
             open();
-    }
-
-    /**
-     * creates switch with the given data
-     * @param name the name of the resistor
-     * @param isOpen whether this switch is open
-     * @param resistor1 a resistor which is connected to the switch that the constructor builds (null means nothing is connected)
-     * @param resistor2 a resistor which is connected to the switch that the constructor builds (null means nothing is connected) if resistor1 is null it must be also null
-     */
-    public Switch(String name,boolean isOpen, Resistor resistor1,Resistor resistor2) {
-        this(name,isOpen);
-        this.resistor1=resistor1;
-        this.resistor2=resistor2;
     }
 
     /**
