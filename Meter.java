@@ -6,7 +6,7 @@ package com.company;
 public interface Meter {
 
     /**
-     * mehod gives the value shown on the meter display
+     * method gives the value shown on the meter display
      * @return the data the meter measures
      */
     double getInfo();
