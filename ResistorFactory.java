@@ -16,15 +16,15 @@ public class ResistorFactory
 
     /**
      * the class take input from the user about the resistor to create and returns it
-     * @return a resistor accordeing to the data about it given in input
+     * @return a resistor according to the data about it given in input
      */
     public Resistor getResistor()
     {
-        System.out.println("Insert resistor type(regular,switch,amperometer,voltmeter,resistWire)");
+        System.out.println("Insert resistor type(r ,switch, amperometer, voltmeter,resistWire)");
         String type = in.next();
         System.out.println("Insert resistor name");
         String name = in.next();
-        if(type.equals("regular"))
+        if(type.equals("r"))
         {
             System.out.println("Insert amount of resistance(Ω)");
             return new Resistor(name,in.nextDouble());
@@ -45,11 +45,11 @@ public class ResistorFactory
         else if(type.equals("resist wire"))
         {
             System.out.println("Insert amount of resistivity(Ωm)");
-            double resitvity = in.nextDouble();
+            double resistivity = in.nextDouble();
             System.out.println("Insert wire's length(m)");
             double length = in.nextDouble();
             System.out.println("Insert wire's area(m*m)");
-            return new ResistWire(name,resitvity,length,in.nextDouble());
+            return new ResistWire(name,resistivity,length,in.nextDouble());
         }
         else
             System.out.println("We do not support this type! creation has stopped");
