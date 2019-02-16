@@ -1,9 +1,8 @@
 package com.company;
 
-import java.util.List;
 
 /**
- * represents a wire in a circuit which has some resistence whioch is determined by this equation: resistivity*length/area
+ * represents a wire in a circuit which has some resistance which is determined by this equation: resistivity*length/area
  */
 public class ResistWire extends Resistor
 {
@@ -27,22 +26,8 @@ public class ResistWire extends Resistor
     }
 
     /**
-     * creates resist wire with the given data
-     * @param name the name of the resistor
-     * @param resistivity the wire resistivity [Ωm]
-     * @param length the wire length [m]
-     * @param area the wire area[m*m]
-     * @param resistor1 a resistor which is connected to the resist wire that the constructor builds (null means nothing is connected)
-     * @param resistor2 a resistor which is connected to the resist wire that the constructor builds (null means nothing is connected) if resistor1 is null it must be also null
-     */
-    public ResistWire(String name,double resistivity, double length, double area , Resistor resistor1, Resistor resistor2)
-    {
-        super(name,resistivity*length/area,resistor1,resistor2);
-    }
-
-    /**
-     * calculate resistence according to the equation: resistivity*length/area
-     * metod is called after changing some data about the resist wire
+     * calculate resistance according to the equation: resistivity*length/area
+     * meted is called after changing some data about the resist wire
      */
     private void calculateResistance()
     {
@@ -86,7 +71,7 @@ public class ResistWire extends Resistor
     }
 
     /**
-     * overrides setResistance because this kind of resisotr doesn't allow changing it's resistence (it can be changed by changing other data like it's length)
+     * overrides setResistance because this kind of resistor doesn't allow changing it's resistance (it can be changed by changing other data like it's length)
      * @param resistance
      */
     @Override
