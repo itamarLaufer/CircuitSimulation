@@ -11,10 +11,6 @@ import static org.junit.Assert.*;
 public class CircuitTest {
 
     @Test
-    public void setCircuitValues() {
-    }
-
-    @Test
     public void simpleMakeCuts(){
         BinNode<Resistor>n1 = new BinNode<>(new Resistor("n1", 0));
         BinNode<Resistor>n2 = new BinNode<>(new Resistor("n2", 0));
