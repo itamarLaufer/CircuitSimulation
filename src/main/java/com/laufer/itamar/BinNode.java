@@ -1,4 +1,4 @@
-package com.company;
+package com.laufer.itamar;
 
 public class BinNode<T> {
     private T value;
