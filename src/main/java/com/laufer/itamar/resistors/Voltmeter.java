@@ -1,4 +1,4 @@
-package com.laufer.itamar;
+package com.laufer.itamar.resistors;
 
 /**
  * represents a voltmeter which is kind of resistor (with enormous resistance) and a Meter that measures voltage on it

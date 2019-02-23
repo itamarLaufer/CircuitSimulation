@@ -1,5 +1,7 @@
 package com.laufer.itamar;
 
+import com.laufer.itamar.resistors.Resistor;
+
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;

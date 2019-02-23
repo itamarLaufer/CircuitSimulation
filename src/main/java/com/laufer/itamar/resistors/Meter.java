@@ -1,4 +1,4 @@
-package com.laufer.itamar;
+package com.laufer.itamar.resistors;
 
 /**
  * represent a meter -> and object the mesures something and can show it

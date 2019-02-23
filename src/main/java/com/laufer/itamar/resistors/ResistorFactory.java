@@ -1,4 +1,4 @@
-package com.laufer.itamar;
+package com.laufer.itamar.resistors;
 
 import java.util.Scanner;
 

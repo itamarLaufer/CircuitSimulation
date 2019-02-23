@@ -1,4 +1,6 @@
-package com.laufer.itamar;
+package com.laufer.itamar.resistors;
+
+import com.laufer.itamar.BinNode;
 
 import java.util.LinkedList;
 
@@ -11,8 +13,8 @@ public class Resistor
     private double resistance; //Ω
     private double current; //A
     private double voltage; //V
-    LinkedList<Character> id;
-    BinNode<Resistor>cut;
+    public LinkedList<Character> id;
+    public BinNode<Resistor> cut;
     /**
      * resistor1 and 2 are the resistors which are connected to the resistor in 1 side the resistor is probably connect to at least one more resistor in the other side
      */

@@ -1,4 +1,4 @@
-package com.laufer.itamar;
+package com.laufer.itamar.resistors;
 
 /**
  * represents a switch which is a resistor that has 2 states open - > enormous resistance and close -> 0 resistance

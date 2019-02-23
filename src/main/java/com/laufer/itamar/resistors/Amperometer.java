@@ -1,4 +1,4 @@
-package com.laufer.itamar;
+package com.laufer.itamar.resistors;
 
 /**
  * represents an amperometer which is a resistor (with 0 resistence) and a Meter which measures the current that flows through it
