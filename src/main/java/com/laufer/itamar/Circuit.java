@@ -28,7 +28,6 @@ public class Circuit
         this.voltage = voltage;
         this.startResistor = resistorPositive;
         this.endResistor = resistorNegative;
-        setCircuitValues();
     }
 
     /**

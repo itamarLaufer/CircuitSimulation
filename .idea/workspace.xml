@@ -2,15 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dd7900b6-1092-49a0-90cb-396e9b498a71" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/Amperometer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/Amperometer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/Circuit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/Circuit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/Meter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/Meter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/ResistWire.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/ResistWire.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/Resistor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/Resistor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/ResistorFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/ResistorFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/Switch.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/Switch.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/Voltmeter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/Voltmeter.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -34,8 +27,8 @@
       <file leaf-file-name="App.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/laufer/itamar/App.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+            <state relative-caret-position="136">
+              <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -43,20 +36,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BinNode.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/laufer/itamar/BinNode.java">
+      <file leaf-file-name="Circuit.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/laufer/itamar/Circuit.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+            <state relative-caret-position="114">
+              <caret line="161" selection-start-line="161" selection-end-line="161" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Circuit.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/laufer/itamar/Circuit.java">
+      <file leaf-file-name="CircuitTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/laufer/itamar/CircuitTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
+            <state relative-caret-position="-49">
+              <caret line="53" column="23" lean-forward="true" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -70,11 +66,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Resistor.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Resistor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/Resistor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+            <state relative-caret-position="17">
+              <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -117,6 +113,13 @@
       </file>
     </leaf>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit4 Test Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -132,9 +135,10 @@
         <option value="$PROJECT_DIR$/src/main/java/com/laufer/itamar/ResistWire.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/laufer/itamar/Switch.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/laufer/itamar/Voltmeter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/Resistor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/laufer/itamar/Circuit.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/laufer/itamar/App.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/Resistor.java" />
+        <option value="$PROJECT_DIR$/src/test/java/com/laufer/itamar/CircuitTest.java" />
       </list>
     </option>
   </component>
@@ -202,10 +206,20 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit4" value="" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.laufer.itamar" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -219,7 +233,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.CircuitTest.complexMakeCuts">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.laufer.itamar.App" />
       <module name="CircuitsSimulation" />
@@ -233,6 +247,52 @@
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+    </configuration>
+    <configuration name="CircuitTest.complexMakeCuts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CircuitsSimulation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.laufer.itamar.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.laufer.itamar" />
+      <option name="MAIN_CLASS_NAME" value="com.laufer.itamar.CircuitTest" />
+      <option name="METHOD_NAME" value="complexMakeCuts" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="CircuitTest.simpleMakeCuts" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="CircuitsSimulation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.laufer.itamar.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="com.laufer.itamar" />
+      <option name="MAIN_CLASS_NAME" value="com.laufer.itamar.CircuitTest" />
+      <option name="METHOD_NAME" value="simpleMakeCuts" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
@@ -272,8 +332,15 @@
       <properties />
       <listeners />
     </configuration>
+    <list>
+      <item itemvalue="Application.App" />
+      <item itemvalue="JUnit.CircuitTest.simpleMakeCuts" />
+      <item itemvalue="JUnit.CircuitTest.complexMakeCuts" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CircuitTest.complexMakeCuts" />
+        <item itemvalue="JUnit.CircuitTest.simpleMakeCuts" />
         <item itemvalue="Application.App" />
       </list>
     </recent_temporary>
@@ -291,24 +358,53 @@
     </task>
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="CircuitTest_simpleMakeCuts - 2019.02.23 at 22h 18m 42s.xml">
+      <configuration name="CircuitTest.simpleMakeCuts" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CircuitTest_simpleMakeCuts - 2019.02.23 at 22h 19m 41s.xml">
+      <configuration name="CircuitTest.simpleMakeCuts" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CircuitTest_simpleMakeCuts - 2019.02.23 at 22h 20m 10s.xml">
+      <configuration name="CircuitTest.simpleMakeCuts" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CircuitTest_complexMakeCuts - 2019.02.23 at 22h 27m 44s.xml">
+      <configuration name="CircuitTest.complexMakeCuts" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CircuitTest_complexMakeCuts - 2019.02.23 at 22h 28m 07s.xml">
+      <configuration name="CircuitTest.complexMakeCuts" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CircuitTest_complexMakeCuts - 2019.02.23 at 22h 28m 14s.xml">
+      <configuration name="CircuitTest.complexMakeCuts" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CircuitTest_complexMakeCuts - 2019.02.23 at 22h 28m 21s.xml">
+      <configuration name="CircuitTest.complexMakeCuts" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CircuitTest_complexMakeCuts - 2019.02.23 at 22h 29m 38s.xml">
+      <configuration name="CircuitTest.complexMakeCuts" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CircuitTest_complexMakeCuts - 2019.02.23 at 22h 30m 56s.xml">
+      <configuration name="CircuitTest.complexMakeCuts" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="7" visible="true" weight="0.3298969" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3298969" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Maven Projects" order="3" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3298969" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3298969" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24980484" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24980484" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -348,6 +444,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="20" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -421,16 +520,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/laufer/itamar/App.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/Amperometer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -473,17 +562,44 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/laufer/itamar/Circuit.java">
+    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
-          <caret line="61" column="43" selection-start-line="61" selection-start-column="43" selection-end-line="61" selection-end-column="43" />
+          <caret line="11" column="13" lean-forward="true" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/laufer/itamar/resistors/Resistor.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="19" column="7" selection-start-line="19" selection-start-column="7" selection-end-line="19" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/laufer/itamar/App.java">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="16" column="11" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+          <caret line="34" column="35" selection-start-line="34" selection-start-column="35" selection-end-line="34" selection-end-column="35" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/laufer/itamar/Circuit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="114">
+          <caret line="161" selection-start-line="161" selection-end-line="161" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/laufer/itamar/CircuitTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-49">
+          <caret line="53" column="23" lean-forward="true" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
         </state>
       </provider>
     </entry>

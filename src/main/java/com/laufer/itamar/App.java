@@ -32,6 +32,7 @@ public class App {
         resistors.add(positiveTrigger);
         resistors.add(negativeTrigger);
         Circuit circuit = new Circuit(20, positiveTrigger, negativeTrigger, resistors);
+        circuit.setCircuitValues();
         for (BinNode<Resistor> r : resistors) {
             System.out.println(r);
         }
