@@ -3,6 +3,9 @@ package com.laufer.itamar;
 import com.laufer.itamar.resistors.Resistor;
 import org.junit.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.*;
 
 public class CircuitTest {
@@ -72,5 +75,56 @@ public class CircuitTest {
         assertEquals(n4.getValue().cut, n11);
         assertEquals(n8.getValue().cut, n11);
         assertEquals(n3.getValue().cut, n8);
+    }
+    @Test
+    public void simpleCircuitCalculation(){
+        List<BinNode<Resistor>> resistors = new ArrayList<>(10);
+        BinNode<Resistor> positiveTrigger = new BinNode<>(new Resistor("positiveTrigger", 0));
+        BinNode<Resistor> negativeTrigger = new BinNode<>(new Resistor("negativeTrigger", 0));
+        BinNode<Resistor> r1 = new BinNode<>(new Resistor("r1", 10));
+        BinNode<Resistor> r2 = new BinNode<>(new Resistor("r2", 8));
+        BinNode<Resistor> r3 = new BinNode<>(new Resistor("r3", 5));
+        BinNode<Resistor> r4 = new BinNode<>(new Resistor("r4", 20));
+        positiveTrigger.connect(r1);
+        r1.connect(r2);
+        r1.connect(r4);
+        r2.connect(r3);
+        r3.connect(negativeTrigger);
+        r4.connect(negativeTrigger);
+        resistors.add(r1);
+        resistors.add(r2);
+        resistors.add(r3);
+        resistors.add(r4);
+        resistors.add(positiveTrigger);
+        resistors.add(negativeTrigger);
+        Circuit circuit = new Circuit(20, positiveTrigger, negativeTrigger, resistors);
+        circuit.setCircuitValues();
+
+        assertTrue(equalsApproximately(circuit.getTotalCurrent(), 1.12));
+        assertTrue(equalsApproximately(circuit.getTotalResistance(), 17.88));
+        assertTrue(equalsApproximately(negativeTrigger.getValue().getCurrent(), circuit.getTotalCurrent()));
+
+        assertTrue(equalsApproximately(r1.getValue().getCurrent(), circuit.getTotalCurrent()));
+        assertTrue(equalsApproximately(r1.getValue().getVoltage(), r1.getValue().getCurrent() * r1.getValue().getResistance()));
+
+        assertTrue(equalsApproximately(r2.getValue().getCurrent(), 0.68));
+        assertTrue(equalsApproximately(r2.getValue().getVoltage(), r2.getValue().getCurrent() * r2.getValue().getResistance()));
+
+        assertTrue(equalsApproximately(r3.getValue().getCurrent(), r2.getValue().getCurrent()));
+        assertTrue(equalsApproximately(r3.getValue().getVoltage(), r3.getValue().getCurrent() * r3.getValue().getResistance()));
+
+        assertTrue(equalsApproximately(r4.getValue().getCurrent(), r1.getValue().getCurrent() - r2.getValue().getCurrent()));
+        assertTrue(equalsApproximately(r4.getValue().getVoltage(), r4.getValue().getCurrent() * r4.getValue().getResistance()));
+    }
+
+    /**
+     * Helper function to check if two double numbers are approximately equal.
+     * @param num1 first double
+     * @param num2 second double
+     * @return whether the given doubles are approximately equal
+     */
+    public static boolean equalsApproximately(double num1, double num2){
+        final double DEVIATION = 0.01;
+        return Math.abs(num1 - num2) < DEVIATION;
     }
 }

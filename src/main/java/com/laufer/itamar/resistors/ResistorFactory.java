@@ -1,5 +1,7 @@
 package com.laufer.itamar.resistors;
 
+import com.laufer.itamar.BinNode;
+
 import java.util.Scanner;
 
 /**
@@ -18,7 +20,7 @@ public class ResistorFactory
      * the class take input from the user about the resistor to create and returns it
      * @return a resistor according to the data about it given in input
      */
-    public Resistor getResistor()
+    public BinNode<Resistor> getResistor()
     {
         System.out.println("Insert resistor type(r ,switch, amperometer, voltmeter,resistWire)");
         String type = in.next();
@@ -27,20 +29,20 @@ public class ResistorFactory
         if(type.equals("r"))
         {
             System.out.println("Insert amount of resistance(Ω)");
-            return new Resistor(name,in.nextDouble());
+            return new BinNode<>(new Resistor(name,in.nextDouble()));
         }
         else if(type.equals("switch"))
         {
             System.out.println("Is it open? (true=open, false=close)");
-            return new Switch(name,in.nextBoolean());
+            return new BinNode<>(new Switch(name,in.nextBoolean()));
         }
         else if(type.equals("amperometer"))
         {
-            return new Amperometer(name);
+            return new BinNode<>(new Amperometer(name));
         }
         else if(type.equals("voltmeter"))
         {
-            return new Voltmeter(name);
+            return new BinNode<>(new Voltmeter(name));
         }
         else if(type.equals("resist wire"))
         {
@@ -49,7 +51,7 @@ public class ResistorFactory
             System.out.println("Insert wire's length(m)");
             double length = in.nextDouble();
             System.out.println("Insert wire's area(m*m)");
-            return new ResistWire(name,resistivity,length,in.nextDouble());
+            return new BinNode<>(new ResistWire(name,resistivity,length,in.nextDouble()));
         }
         else
             System.out.println("We do not support this type! creation has stopped");
